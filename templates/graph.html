@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/graph.css" />
+  <link rel="stylesheet" href="/static/graph_dropdown.css" />
+  <title>Graph Implementation</title>
+</head>
+
+<body>
+  <a href="{{ url_for('homepage') }}">
+    <img class="home-button" src="/static/images/home button.png" alt="Home Button" />
+  </a>
+  <h1 class="simulator-title">Maps</h1>
+
+  <div class="sidebar-bg">
+    <img class="library-image" src="/static/images/library.png" alt="Library" />
+    <div class="library-text">Your Library</div>
+    <div class="lab-art-container">
+      <div class="selected-lab-art"><a href="{{ url_for('homepage') }}">Lab Activities</a></div>
+      <div class="artists-text"><a href="{{ url_for('artist_homepage') }}">Artists</a></div>
+    </div>
+
+    <div class="left-container">
+      <div class="vertical-container">
+        <div class="item">
+          <img class="image" src="/static/images/Linked List.png" alt="Linked List">
+          <a href="{{ url_for('linked_list') }}" class="activity">Linked List</a>
+        </div>
+        <div class="item">
+          <img class="image" src="/static/images/Stack.png" alt="Stack">
+          <a href="{{ url_for('stack') }}" class="activity">Stack</a>
+        </div>
+        <div class="item">
+          <img class="image" src="/static/images/Queue.png" alt="Queue">
+          <a href="{{ url_for('overall_choose') }}" class="activity">Queue</a>
+        </div>
+        <div class="item">
+          <img class="image" src="/static/images/Binary Tree.png" alt="Binary Tree">
+          <a href="{{ url_for('binary_tree') }}" class="activity">Binary Tree</a>
+        </div>
+        <div class="item">
+          <img class="image" src="/static/images/Graph.png" alt="Graph">
+          <a href="{{ url_for('graph') }}" class="selected-activity">Graph</a>
+        </div>
+        <div class="item">
+          <img class="image" src="/static/images/Sorting.png" alt="Sorting">
+          <a href="{{ url_for('bubble_sort') }}" class="activity">Sorting Algorithms</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Background Output Div with Curved Box -->
+  <div class="background-output">
+    <div class="output-container">
+      <div class="output-title">Output</div>
+      <!-- Map content is placed inside the inner-output-container here -->
+      <div class="inner-output-container">
+        <div id="map-container" style="height: 100%; width: 100%;"></div> <!-- Ensure the map fits properly -->
+      </div>
+    </div>
+    <div class="message-container">
+      {% if message %}
+      <p>{{ message | safe }}</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Other Sections (Cover, Buttons, etc.) -->
+  <div class="background-cover">
+    <img class="image-cover" src="/static/images/stack cover.png" alt="Cover" />
+    <img class="image-badge" src="/static/images/verified badge.png" alt="Badge" />
+    <div class="artist-name">Graph</div>
+    <img class="image-cover-player" src="/static/images/cover player.png" alt="Cover Player" />
+  </div>
+
+  <div class="background-buttons">
+    <form id="routeForm" onsubmit="return false;">
+      <div class="current-location-search-bar">
+        <div class="location-text">Current Location:</div>
+        <div id="category-select">
+          <p id="categoryText">All Categories</p>
+          <img src="/static/images/arrow.png" alt="Arrow">
+          <ul id="category-list">
+            <li class="category-option">All Categories</li>
+            <li class="category-option">LRT 1</li>
+            <li class="category-option">LRT 2</li>
+            <li class="category-option">MRT 3</li>
+          </ul>
+        </div>
+        <div id="station-select">
+          <input class="textbox" type="text" id="stationSearch" placeholder="Search Station">
+          <ul id="station-list">
+          </ul>
+        </div>
+      </div>
+      <div class="destination-location-search-bar">
+        <div class="destination-location-text">Destination Location:</div>
+        <div id="destination-category-select">
+          <p id="destination-category-text">All Categories</p>
+          <img src="/static/images/arrow.png" alt="Arrow">
+          <ul id="destination-category-list">
+            <li class="destination-category-option">All Categories</li>
+            <li class="destination-category-option">LRT 1</li>
+            <li class="destination-category-option">LRT 2</li>
+            <li class="destination-category-option">MRT 3</li>
+          </ul>
+        </div>
+        <div id="destination-station-select">
+          <input class="destination-textbox" type="text" id="destination-station-search"
+            placeholder="Search Destination Station">
+          <ul id="destination-station-list">
+          </ul>
+        </div>
+      </div>
+      <div class="buttons">
+        <button type="button" name="action" onclick="findShortestPath()">FIND SHORTEST PATH</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function findShortestPath() {
+      const start = document.querySelector('#stationSearch').value;
+      const end = document.querySelector('#destination-station-search').value;
+
+      if (!start || !end) {
+        alert('Please select both start and end stations');
+        return;
+      }
+
+      fetch('/shortest_path', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ start, end })
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.error) {
+            document.querySelector('.message-container').innerHTML =
+              `<p class="error">${data.error}</p>`;
+          } else {
+            // Update map visualization
+            highlightPath(data.path, start, end);
+            // Display formatted route information
+            document.querySelector('.message-container').innerHTML = `
+                        <div class="route-info">
+                            <p class="path">Shortest Path: ${data.path.join(' → ')}</p>
+                            <p class="distance">Calculated Distance: ${data.distance} km</p>
+                        </div>
+                    `;
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          document.querySelector('.message-container').innerHTML =
+            `<p class="error">An error occurred while finding the path</p>`;
+        });
+    }
+  </script>
+
+
+  <div class="sound-bar">
+    <img class="image-pseudoscode" src="/static/images/pseudoscode.png" alt="Pseudoscode" />
+    <img class="image-section" src="/static/images/section.png" alt="Section" />
+    <img class="image-player" src="/static/images/player.png" alt="Player" />
+    <img class="image-codetunes" src="/static/images/CodeTunes.png" alt="CodeTunes" />
+  </div>
+
+  <script>
+    // Load map when DOM is fully ready
+    document.addEventListener('DOMContentLoaded', function () {
+      // Fetch map content
+      fetch('/static/map.html')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text();
+        })
+        .then(data => {
+          const mapContainer = document.getElementById('map-container');
+          if (mapContainer) {
+            mapContainer.innerHTML = data;
+            console.log('Map loaded successfully');
+          } else {
+            console.error('Map container not found');
+          }
+        })
+        .catch(error => {
+          console.error('Error loading map:', error);
+          document.getElementById('map-container').innerHTML =
+            '<p style="color: red;">Error loading map. Please refresh the page.</p>';
+        });
+    });
+  </script>
+  <script src="/static/current_location.js"></script>
+  <script src="/static/destination_location.js"></script>
+
+  <script src="/static/stationselection.js"></script>
+  <script>
+    // Load map and initialize
+    fetch('/static/map.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('map-container').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading map:', error));
+  </script>
+</body>
+
+</html>

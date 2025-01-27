@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="/static/april.css" />
+  <title>Member April</title>
+</head>
+
+<body>
+  <a href="{{ url_for('homepage') }}">
+    <image class="home-button" src="/static/images/home button.png"></image>
+  </a>
+  <h1 class="name">Profile</h1>
+  <div class="sidebar-bg">
+    <image class="library-image" src="/static/images/library.png"></image>
+    <div class="library-text">Your Library</div>
+
+    <div class="lab-art-container">
+      <div class="activities-text"><a href="{{ url_for('homepage') }}">Lab Activities</a></div>
+      <div class="selected-lab-art"><a href="#">Artists</a></div>
+    </div>
+    <div class="left-container">
+      <div class="vertical-container">
+        <div class="item">
+          <img class="image" src="/static/images/daniel.png" alt="Daniel">
+          <a href="{{ url_for('daniel') }}" class="artist">Daniel Reign Cosare</a>
+        </div>
+        <div class="item">
+          <img class="image" src="/static/images/april.png" alt="April">
+          <a href="#" class="selected-artist">April Mae S. Salangsang</a>
+        </div>
+        <div class="item">
+          <img class="image" src="/static/images/celine.png" alt="Celine">
+          <a href="{{ url_for('celine') }}" class="artist">Celine Rose S. Paguio</a>
+        </div>
+        <div class="item">
+          <img class="image" src="/static/images/jam.png" alt="Jamaica">
+          <a href="{{ url_for('jamaica') }}" class="artist">Jamaica C. Palillo</a>
+        </div>
+        <div class="item">
+          <img class="image" src="/static/images/owenn.png" alt="Godwin">
+          <a href="{{ url_for('godwin') }}" class="artist">Godwin Anton M. Mahaba</a>
+        </div>
+        <div class="item">
+          <img class="image" src="/static/images/jester.png" alt="Jester">
+          <a href="{{ url_for('jester') }}" class="artist">Jester Carl C. Tiedra</a>
+        </div>
+        <div class="item">
+          <img class="image" src="/static/images/glenn.png" alt="Glenn">
+          <a href="{{ url_for('glenn') }}" class="artist">Glenn S. Luciano</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sound-bar">
+    <image class="image-album" src="/static/images/salangsang.png"></image>
+    <image class="image-section" src="/static/images/section.png"></image>
+    <image class="image-player" src="/static/images/player.png"></image>
+    <image class="image-codetunes" src="/static/images/CodeTunes.png"></image>
+  </div>
+
+  <div class="header-container">
+    <image class="image-header" src="/static/images/header.png"></image>
+    <image class="image-play" src="/static/images/play.png"></image>
+    <image class="image-copy" src="/static/images/copy.png"></image>
+    <image class="image-more" src="/static/images/more.png"></image>
+    <div class="header-name">April Mae S. Salangsang</div>
+    <div class="header-course">Computer Engineering Student | Frontend Developer</div>
+    <div class="experience">Experience</div>
+  </div>
+  <div class="experience-container">
+    <div class="experiences">
+      <div class="experiences-item">
+        <div class="number">1</div>
+        <image class="picture" src="/static/images/salangsang.png"></image>
+        <div class="selected-experience">Senior Data Associate at AWS Cloud PUP</div>
+      </div>
+      <div class="experiences-item">
+        <div class="number">2</div>
+        <image class="picture" src="/static/images/salangsang.png"></image>
+        <div class="experience-name">Data and ML Cadet at Google Developer PUP</div>
+      </div>
+      <div class="experiences-item">
+        <div class="number">3</div>
+        <image class="picture" src="/static/images/salangsang.png"></image>
+        <div class="experience-name">Data Technologies Team at AWS Cloud PUP</div>
+      </div>
+    </div>
+  </div>
+  <div class="date-container">
+    <div class="date">
+      <div class="date-item">
+        <div class="time">2024-2025</div>
+        <div class="time">00:00</div>
+        <image class="photo" src="/static/images/more.png"></image>
+      </div>
+      <div class="date-item">
+        <div class="time">2024-2025</div>
+        <div class="time">00:00</div>
+        <image class="photo" src="/static/images/more.png"></image>
+      </div>
+      <div class="date-item">
+        <div class="time">2024-2025</div>
+        <div class="time">00:00</div>
+        <image class="photo" src="/static/images/more.png"></image>
+      </div>
+    </div>
+  </div>
+
+  <div class="album-container">
+    <ul class="socials">
+      <li class="icon-content">
+        <a href="https://www.github.com/Aslngsng" target="_blank" aria-label="GitHub" data-social="github">
+          <div class="filled"></div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-github"
+            viewBox="0 0 16 16"
+            xml:space="preserve">
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"
+              fill="currentColor"></path>
+          </svg>
+        </a>
+      </li>
+    </ul>
+    <div class="first-name">April</div>
+    <image class="album" src="/static/images/salangsang.png"></image>
+    <div class="surname">Salangsang</div>
+    <div class="email"><a href="https://mail.google.com/mail/?view=cm&to=salangsang.abril@gmail.com" target="_blank">salangsang.abril@gmail.com</a></div>
+    <div class="featured-container">
+      <div class="project">Final Project</div>
+      <image class="featured" src="/static/images/featured.png"></image>
+      <div class="subject">Data Structure and Algorithms</div>
+      <div class="subject-code">CMPE 201</div>
+    </div>
+  </div>
+</body>
+
+</html>

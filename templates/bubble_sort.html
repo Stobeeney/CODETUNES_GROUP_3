@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/bubblesort.css" />
+    <link rel="stylesheet" href="/static/bubblesort_dropdown.css" />
+    <title>Sorting Algorithms</title>
+</head>
+
+<body>
+    <a href="{{ url_for('homepage') }}">
+        <image class="home-button" src="/static/images/home button.png"></image>
+    </a>
+    <h1 class="simulator-title">Sorting Algorithms</h1>
+    <div class="sidebar-bg">
+        <image class="library-image" src="/static/images/library.png"></image>
+        <div class="library-text">Your Library</div>
+
+        <div class="lab-art-container">
+            <div class="selected-lab-art"><a href="{{ url_for('homepage') }}">Lab Activities</a></div>
+            <div class="artists-text"><a href="{{ url_for('artist_homepage') }}">Artists</a></div>
+        </div>
+
+        <div class="left-container">
+            <div class="vertical-container">
+                <div class="item">
+                    <img class="image" src="/static/images/Linked List.png" alt="Linked List">
+                    <a href="{{ url_for('linked_list') }}" class="activity">Linked List</a>
+                </div>
+                <div class="item">
+                    <img class="image" src="/static/images/Stack.png" alt="Stack">
+                    <a href="{{ url_for('stack') }}" class="activity">Stack</a>
+                </div>
+                <div class="item">
+                    <img class="image" src="/static/images/Queue.png" alt="Queue">
+                    <a href="{{ url_for('overall_choose') }}" class="activity">Queue</a>
+                </div>
+                <div class="item">
+                    <img class="image" src="/static/images/Binary Tree.png" alt="Binary Tree">
+                    <a href="{{ url_for('binary_tree') }}" class="activity">Binary Tree</a>
+                </div>
+                <div class="item">
+                    <img class="image" src="/static/images/Graph.png" alt="Graph">
+                    <a href="{{ url_for('graph') }}" class="activity">Graph</a>
+                </div>
+                <div class="item">
+                    <img class="image" src="/static/images/Sorting.png" alt="Sorting">
+                    <a href="{{ url_for('bubble_sort') }}" class="activity">Sorting</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="background-output">
+        <div class="output-container">
+            <div class="output-title">Output</div>
+            <div class="inner-output-container">
+                <div id="array-container"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="background-cover">
+        <image class="image-cover" src="/static/images/Sorting.png" alt="Sorting"></image>
+        <image class="image-badge" src="/static/images/verified badge.png"></image>
+        <div class="artist-name">Sorting Algorithms</div>
+        <image class="image-cover-player" src="/static/images/cover player.png"></image>
+    </div>
+
+    <div class="background-buttons">
+        <form method="POST">
+            <div>
+                <input class="textbox" type="text" id="user-input" placeholder="Enter comma-separated numbers" />
+            </div>
+            <div class="buttons">
+                <div>
+                    <button type="button" id="generate-btn" onclick="initializeArray(event)">GENERATE ELEMENTS</button>
+                    <button type="button" id="start-btn" onclick="startSort(event)" value="sort">START SORTING</button>
+                    <button type="button" id="clear-btn" onclick="clearArray(event)">CLEAR ELEMENTS</button>
+                </div>
+            </div>
+
+            <div class="algorithm-selection-bar">
+                <div id="algorithm-select">
+                    <p id="algorithmText">Select Sorting Algorithm</p>
+                    <img src="/static/images/arrow.png" alt="Arrow">
+                    <ul id="algorithm-list">
+                        <li class="algorithm-option" onclick="selectAlgorithm('Bubble Sort')">Bubble Sort</li>
+
+                        <a href="{{ url_for('insertion_sort') }}" class="algorithm-option">Insertion Sort</a>
+                        <br><br>
+                        <a href="{{ url_for('selection_sort') }}" class="algorithm-option">Selection Sort</a>
+                        <br><br>
+                        <a href="{{ url_for('merge_sort') }}" class="algorithm-option">Merge Sort</a>
+                        <br><br>
+                        <a href="{{ url_for('quick_sort') }}" class="algorithm-option">Quick Sort</a>
+                        <br><br>
+                    </ul>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <div class="sound-bar">
+        <image class="image-pseudoscode" src="/static/images/pseudoscode.png"></image>
+        <image class="image-section" src="/static/images/section.png"></image>
+        <image class="image-player" src="/static/images/player.png"></image>
+        <image class="image-codetunes" src="/static/images/CodeTunes.png"></image>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const algorithmSelect = document.getElementById('algorithm-select');
+            const algorithmList = document.getElementById('algorithm-list');
+            const algorithmText = document.getElementById('algorithmText');
+
+            algorithmSelect.addEventListener('click', function (event) {
+                if (algorithmList.style.maxHeight) {
+                    algorithmList.style.maxHeight = null;
+                } else {
+                    algorithmList.style.maxHeight = algorithmList.scrollHeight + "px";
+                }
+            });
+
+            document.querySelectorAll('.algorithm-option').forEach(option => {
+                option.addEventListener('click', function (event) {
+                    event.stopPropagation(); // Prevent the click event from bubbling up to the parent
+                    algorithmText.innerText = this.innerText;
+                    algorithmList.style.maxHeight = null;
+                });
+            });
+        });
+    </script>
+    <script src="/static/bubblesort.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+.algorithm-selection-bar {
+    position: relative;
+    top: 80px;
+    left: 280px;
+    background: #ff911400;
+    width: 300px;
+    max-width: 1070px;
+    display: flex;
+    border-radius: 4px;
+    gap: 10px;
+    zoom: 84%;
+}
+
+.algorithm-text {
+    width: 25%;
+    position: relative;
+    font-size: 18px;
+    color: #f0e3e3;
+    text-align: center;
+    line-height: 40px;
+    font-weight: 500;
+}
+
+#algorithm-select {
+    background: #e7cdcd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #333333;
+    width: 200px;
+    padding: 2px 20px;
+    height: 35px;
+    cursor: pointer;
+    position: relative;
+    top: 2px;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+}
+
+#algorithm-select img {
+    width: 15px;
+}
+
+#algorithm-list {
+    position: absolute;
+    top: 80%;
+    left: 0;
+    list-style: none;
+    background: #ffffff;
+    color: #555;
+    width: 83%;
+    height: 200px;
+    border-radius: 4px;
+    max-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: max-height 0.3s ease-out;
+    z-index: 10;
+}
+
+#algorithm-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+#algorithm-list::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+#algorithm-list::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+#algorithm-list li {
+    padding: 10px 20px;
+    cursor: pointer;
+    padding-left: 5px;
+    text-align: left;
+}
+
+.input-container {
+    height: 35px;
+    width: 800px;
+    cursor: pointer;
+    position: relative;
+    top: 2px;
+}

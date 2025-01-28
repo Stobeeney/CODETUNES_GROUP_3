@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "Quirino Ave.", "Pedro Gil", "United Nations", "Central Terminal",
         "Carriedo", "Doroteo Jose", "Bambang", "Tayuman", "Blumentritt",
         "Abad Santos", "R.Papa", "5th Avenue", "Monumento", "Balintawak",
-        "Fernando Poe Jr."],
+        "Fernando Poe Jr"],
         "LRT 2": ["Antipolo", "Marikina-Pasig", "Santolan", "Katipunan", 
             "Anonas", "Lrt 2-Araneta Center-Cubao", "Betty Go-Belmonte", "Gilmore", 
             "J. Ruiz", "V. Mapa", "Pureza", "Legarda", "Recto"],

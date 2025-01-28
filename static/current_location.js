@@ -15,12 +15,12 @@ const stations = {
         "Dr. Santos", "Ninoy Aquino Avenue", "PITX", "MIA Road", "Redemptorist-Aseana", 
         "Baclaran", "EDSA", "Libertad", "Gil Puyat", "Vito Cruz",
         "Quirino Ave.", "Pedro Gil", "United Nations", "Central Terminal",
-        "Carriedo", "D. Jose", "Bambang", "Tayuman", "Blumentritt",
-        "Abad Santos", "R. Papa", "5th Ave.", "Monumento", "Balintawak",
-        "Fernando Poe Jr.", "Antipolo", "Marikina-Pasig", "Santolan", 
-        "Katipunan", "Anonas", "Kamuning", 
+        "Carriedo", "Doroteo Jose", "Bambang", "Tayuman", "Blumentritt",
+        "Abad Santos", "R.Papa", "5th Avenue", "Monumento", "Balintawak",
+        "Fernando Poe Jr", "Antipolo", "Marikina-Pasig", "Santolan", 
+        "Katipunan", "Anonas", "Lrt 2-Araneta Center-Cubao",
         "Betty Go-Belmonte", "Gilmore", "J. Ruiz", "V. Mapa", "Pureza", 
-        "Legarda", "Recto", "North Avenue", "Quezon Avenue", "GMA Kamuning", "Cubao", 
+        "Legarda", "Recto", "North Avenue", "Quezon Avenue", "GMA-Kamuning", "Cubao", 
         "Santolan-Annapolis", "Ortigas", "Shaw Boulevard", "Boni", "Guadalupe", 
         "Buendia", "Ayala", "Magallanes", "Taft Avenue"
     ],
@@ -28,15 +28,15 @@ const stations = {
         "Dr. Santos", "Ninoy Aquino Avenue", "PITX", "MIA Road", "Redemptorist-Aseana",
         "Baclaran", "EDSA", "Libertad", "Gil Puyat", "Vito Cruz",
         "Quirino Ave.", "Pedro Gil", "United Nations", "Central Terminal",
-        "Carriedo", "D. Jose", "Bambang", "Tayuman", "Blumentritt",
-        "Abad Santos", "R. Papa", "5th Ave.", "Monumento", "Balintawak",
-        "Fernando Poe Jr."
+        "Carriedo", "Doroteo Jose", "Bambang", "Tayuman", "Blumentritt",
+        "Abad Santos", "R.Papa", "5th Avenue", "Monumento", "Balintawak",
+        "Fernando Poe Jr"
     ],
     "LRT 2": ["Antipolo", "Marikina-Pasig", "Santolan", "Katipunan", 
-        "Anonas", "Kamuning", "Cubao", "Betty Go-Belmonte", "Gilmore", 
+        "Anonas", "Lrt 2-Araneta Center-Cubao", "Betty Go-Belmonte", "Gilmore", 
         "J. Ruiz", "V. Mapa", "Pureza", "Legarda", "Recto"
     ],
-    "MRT 3": ["North Avenue", "Quezon Avenue", "GMA Kamuning", "Cubao", 
+    "MRT 3": ["North Avenue", "Quezon Avenue", "GMA-Kamuning", "Mrt 3-Araneta Center-Cubao", 
         "Santolan-Annapolis", "Ortigas", "Shaw Boulevard", "Boni", "Guadalupe", 
         "Buendia", "Ayala", "Magallanes", "Taft Avenue"]
 };
